@@ -18,6 +18,12 @@ export const SERVICOS_DATA = [
     iconSlug: "teste",
     href: "#teste-de-velocidade"
   },
-  { id: 3, title: "Precisa de ajuda?", description: "Fale com o suporte", iconSlug: "suporte", href: "https://wa.me/5513996371382" },
+  {
+    id: 3,
+    title: "Precisa de ajuda?",
+    description: "Fale com o suporte",
+    iconSlug: "suporte",
+    href: "https://wa.me/5513996371382?text=Olá!%20Vim%20do%20site."
+  },
   { id: 4, title: "Nossas redes", description: "Siga a MeloLink", iconSlug: "redes", href: "#", isSocial: true }
 ];

@@ -13,16 +13,17 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
+  // Link do WhatsApp com a mensagem: "Olá! Vim do site e gostaria de saber sobre os planos."
+  const WHATSAPP_PLANOS_URL = "https://wa.me/551333721548?text=Olá!%20Vim%20do%20site%20e%20gostaria%20de%20saber%20sobre%20os%20planos.";
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-
     if (href.includes('#')) {
       const id = href.split('#')[1];
       const element = document.getElementById(id);
 
       if (element) {
-        e.preventDefault(); // Evita que o Next.js apenas mude a URL
-        const offset = 80; // Altura da sua navbar para não cobrir o título
+        e.preventDefault();
+        const offset = 80;
         const elementPosition = element.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - offset;
 
@@ -31,7 +32,7 @@ export default function Navbar() {
           behavior: 'smooth'
         });
         
-        closeMenu(); // Fecha o menu mobile se estiver aberto
+        closeMenu();
       }
     }
   };
@@ -44,8 +45,6 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScrollEvent);
     return () => window.removeEventListener('scroll', handleScrollEvent);
   }, []);
-
-  // ... (mantenha seus outros useEffects de Esc e Scroll Lock iguais)
 
   const isCompact = scrolled && !isHovered;
 
@@ -74,7 +73,7 @@ export default function Navbar() {
                 <NavLink 
                   key={link.name} 
                   href={link.href}
-                  onClick={(e: any) => handleScroll(e, link.href)} // Aplica o scroll manual
+                  onClick={(e: any) => handleScroll(e, link.href)}
                 >
                   {link.name}
                 </NavLink>
@@ -85,7 +84,8 @@ export default function Navbar() {
               <NavButton href="https://melolink.portalinternet.com.br/radiusnet/cda/login.php" target='_blank' variant="outline">
                 <User size={18} /> Área do assinante
               </NavButton>
-              <NavButton href="https://wa.me/551333721548" target='_blank'>Assinar Agora</NavButton>
+              {/* Ajustado aqui no Desktop */}
+              <NavButton href={WHATSAPP_PLANOS_URL} target='_blank'>Assinar Agora</NavButton>
             </div>
           </div>
 
@@ -94,7 +94,7 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Mobile Menu corrigido e com funcionalidade de scroll */}
+        {/* Mobile Menu */}
         <div className={`
           absolute top-full left-0 w-full bg-white border-t shadow-xl lg:hidden transition-all duration-300
           ${isOpen ? "translate-y-0 opacity-100" : "-translate-y-4 opacity-0 pointer-events-none"}
@@ -105,7 +105,7 @@ export default function Navbar() {
                 key={link.name} 
                 href={link.href}
                 className="block text-lg font-semibold text-gray-700 py-3 border-b border-gray-100"
-                onClick={(e) => handleScroll(e, link.href)} // Aplica o scroll manual no mobile
+                onClick={(e) => handleScroll(e, link.href)}
               >
                 {link.name}
               </Link>
@@ -115,7 +115,8 @@ export default function Navbar() {
               <NavButton href="https://melolink.portalinternet.com.br/radiusnet/cda/login.php" target="_blank" variant="outline">
                 <User size={18} /> Área do assinante
               </NavButton>
-              <NavButton href="https://wa.me/551333721548" target="_blank">
+              {/* Ajustado aqui no Mobile */}
+              <NavButton href={WHATSAPP_PLANOS_URL} target="_blank">
                 Assinar Agora
               </NavButton>
             </div>

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import dynamic from "next/dynamic";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import Navbar from './src/components/sections/Navbar/Index';
 
@@ -59,6 +61,8 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Navbar />
         {children}
+        <Analytics />
+        <SpeedInsights/>
         <Footer />
         <WhatsAppButton />
       </body>
