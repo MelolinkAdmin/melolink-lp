@@ -9,7 +9,6 @@ import { politicaConteudo } from "../src/components/constants/Politica";
 export default function PoliticaDePrivacidade() {
   const [showBackToTop, setShowBackToTop] = useState(false);
 
-  // Monitora o scroll para mostrar/esconder o botão de voltar ao topo
   useEffect(() => {
     const handleScrollVisibility = () => {
       setShowBackToTop(window.scrollY > 400);
@@ -22,7 +21,7 @@ export default function PoliticaDePrivacidade() {
     e.preventDefault();
     const element = document.getElementById(id);
     if (element) {
-      const offset = 100;
+      const offset = 120; // Aumentado para garantir que a navbar não tampe o título da seção
       const elementPosition = element.getBoundingClientRect().top + window.scrollY;
       window.scrollTo({
         top: elementPosition - offset,
@@ -36,8 +35,9 @@ export default function PoliticaDePrivacidade() {
   };
 
   return (
-    <main className="flex-grow bg-white text-slate-900 scroll-smooth pt-5 relative">
-      
+    /* CORREÇÃO PRINCIPAL: Aumentado o padding-top de pt-5 para pt-20 no mobile e pt-32 no desktop */
+    <main className="flex-grow bg-white text-slate-900 scroll-smooth pt-24 md:pt-32 relative">
+
       {/* 1. Botão Flutuante Lateral (Apenas Desktop) */}
       <div className="hidden xl:block fixed left-10 top-1/2 -translate-y-1/2 z-50">
         <Link href="/">
@@ -50,22 +50,23 @@ export default function PoliticaDePrivacidade() {
         </Link>
       </div>
 
-      {/* 2. Botão Voltar ao Topo (Mobile e Desktop) */}
+      {/* 2. Botão Voltar ao Topo */}
       <button
         onClick={scrollToTop}
-        className={`fixed bottom-8 right-8 z-50 p-3 rounded-full bg-[#E60000] text-white shadow-lg transition-all duration-300 hover:scale-110 active:scale-95 ${
-          showBackToTop ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10 pointer-events-none"
-        }`}
+        className={`fixed bottom-24 right-8 z-50 p-3 rounded-full bg-[#E60000] text-white shadow-lg transition-all duration-300 hover:scale-110 active:scale-95 ${showBackToTop ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10 pointer-events-none"
+          }`}
         aria-label="Voltar ao topo"
       >
         <ArrowUp size={24} />
       </button>
 
-      {/* Header com Link de Saída Rápido */}
-      <section className="bg-slate-50 border-b border-slate-200 py-12 md:py-20">
+      {/* Header com Link de Saída Rápido 
+          CORREÇÃO: Aumentado py-12 para py-20 para garantir respiro visual após o pt-24 do main */}
+      <section className="bg-slate-50 border-b border-slate-200 py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-3xl md:text-5xl font-black italic uppercase tracking-tighter mb-4 text-slate-950">
+            {/* CORREÇÃO: leading-tight para evitar que as linhas do título se choquem no mobile */}
+            <h1 className="text-3xl md:text-5xl font-black italic uppercase tracking-tighter mb-6 text-slate-950 leading-tight">
               POLÍTICA DE <span className="text-[#E60000]">PRIVACIDADE</span>
             </h1>
             <p className="text-slate-500 text-sm md:text-base">
@@ -91,12 +92,12 @@ export default function PoliticaDePrivacidade() {
             <List size={16} className="text-[#E60000]" />
             <span>Sumário do Documento</span>
           </div>
-          
+
           <div className="columns-1 md:columns-2 gap-8 space-y-3">
             {politicaConteudo.secoes.map((secao) => (
               <div key={secao.id} className="break-inside-avoid">
-                <a 
-                  href={`#secao-${secao.id}`} 
+                <a
+                  href={`#secao-${secao.id}`}
                   onClick={(e) => handleScroll(e, `secao-${secao.id}`)}
                   className="group flex items-start gap-2 py-1 text-sm text-slate-600 hover:text-[#E60000] transition-colors leading-snug"
                 >
@@ -114,20 +115,20 @@ export default function PoliticaDePrivacidade() {
         <article className="prose prose-slate max-w-none prose-p:text-slate-600 prose-headings:uppercase">
           <div className="space-y-20">
             {politicaConteudo.secoes.map((secao) => (
-              <section 
-                key={secao.id} 
-                id={`secao-${secao.id}`} 
-                className="scroll-mt-28"
+              <section
+                key={secao.id}
+                id={`secao-${secao.id}`}
+                className="scroll-mt-32" /* CORREÇÃO: scroll-mt-32 para ancoragem perfeita */
               >
                 <div className="flex items-center gap-4 mb-8">
-                   <span className="flex-none flex items-center justify-center w-10 h-10 rounded-lg bg-slate-900 text-white text-sm font-bold italic">
+                  <span className="flex-none flex items-center justify-center w-10 h-10 rounded-lg bg-slate-900 text-white text-sm font-bold italic">
                     {secao.id}
                   </span>
                   <h2 className="text-xl md:text-2xl font-black italic text-slate-950 m-0">
                     {secao.titulo}
                   </h2>
                 </div>
-                
+
                 <div className="space-y-6">
                   {secao.conteudo.map((paragrafo, idx) => (
                     <p key={idx} className="text-base md:text-[1.05rem] leading-relaxed">
@@ -139,13 +140,12 @@ export default function PoliticaDePrivacidade() {
             ))}
           </div>
 
-          {/* Rodapé Final */}
           <footer className="mt-32 pt-12 border-t border-slate-100 flex flex-col items-center text-center">
             <p className="text-slate-400 text-[10px] mb-8 uppercase tracking-[0.3em] font-bold">
               Certificado de Transparência MeloLink
             </p>
             <div className="flex gap-4">
-               <Link href="/" passHref>
+              <Link href="/" passHref>
                 <Button variant="red" className="font-bold italic uppercase tracking-wider">
                   Voltar para o Início
                 </Button>
@@ -154,8 +154,6 @@ export default function PoliticaDePrivacidade() {
           </footer>
         </article>
       </section>
-
-
     </main>
   );
 }

@@ -22,8 +22,8 @@ export default function ProjetosEspeciais() {
       <div className="max-w-[1200px] mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
-          {/* COLUNA 1: IMAGEM (Agora fixada à esquerda no código e no layout) */}
-          <div className="relative">
+          {/* COLUNA: IMAGEM (order-2 no mobile / order-1 no desktop) */}
+          <div className="relative order-2 lg:order-1">
             <FadeIn>
               <div className="relative group h-[320px] md:h-[400px] lg:h-[500px] w-full">
                 <Image
@@ -51,8 +51,8 @@ export default function ProjetosEspeciais() {
             </FadeIn>
           </div>
 
-          {/* COLUNA 2: TEXTO E CONTEÚDO */}
-          <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+          {/* COLUNA: TEXTO E CONTEÚDO (order-1 no mobile / order-2 no desktop) */}
+          <div className="flex flex-col items-center lg:items-start text-center lg:text-left order-1 lg:order-2">
             <header className="space-y-4 w-full">
               <FadeIn>
                 <h3 className="text-[#FF0000] font-black tracking-[0.2em] uppercase text-sm flex items-center justify-center lg:justify-start gap-3 w-full">

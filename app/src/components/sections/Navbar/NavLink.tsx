@@ -4,11 +4,13 @@ import Link from 'next/link';
 interface NavLinkProps {
   href: string;
   children: React.ReactNode;
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void; 
 }
 
-export const NavLink = ({ href, children }: NavLinkProps) => (
+export const NavLink = ({ href, children, onClick }: NavLinkProps) => (
   <Link 
     href={href} 
+    onClick={onClick} // O clique agora é repassado para o Next.js Link
     className="text-slate-600 hover:text-red-600 transition-colors font-bold text-sm uppercase tracking-tight relative group"
   >
     {children}

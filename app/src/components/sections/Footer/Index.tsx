@@ -1,11 +1,41 @@
+"use client";
+
+import React from 'react';
 import Link from "next/link";
 import { Logo } from "../../ui/Logo";
 import { LogoAnatel } from "../../ui/LogoAnatel";
 import { SocialLinks } from "../../ui/SociaisLinks";
-import { MapPin, Phone, Mail, ExternalLink } from "lucide-react"; // Padronizando com Lucide
+import { MapPin, Phone, Mail, ExternalLink } from "lucide-react";
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
+
+    // Função para forçar o scroll mesmo se o hash já estiver na URL
+    const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+        if (href.includes('#')) {
+            const id = href.split('#')[1];
+            const element = document.getElementById(id);
+
+            if (element) {
+                e.preventDefault();
+                // Ajuste o offset (80) se o scroll parar muito em cima do título
+                const offset = 80;
+                const elementPosition = element.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        } else if (href === "/") {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    };
 
     return (
         <footer className="bg-[#030000] text-white pt-16 md:pt-20 pb-10 relative overflow-hidden antialiased">
@@ -18,6 +48,7 @@ export default function Footer() {
                     <div className="md:col-span-2 space-y-6">
                         <Link
                             href="/"
+                            onClick={(e) => handleScroll(e, "/")}
                             className="inline-block leading-none select-none cursor-pointer hover:opacity-80 transition-opacity"
                         >
                             <Logo variant="white" height={80} />
@@ -32,14 +63,22 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    {/* Quick Links */}
+                    {/* Quick Links Corrigidos */}
                     <nav aria-label="Links Institucionais">
                         <h4 className="text-white font-bold uppercase tracking-wider mb-6 border-l-4 border-[#FF0000] pl-3">Institucional</h4>
                         <ul className="space-y-3 text-sm text-gray-400 m-0 p-0">
-                            <li className="list-none"><Link href="/" className="hover:text-[#FF0000] transition-colors">Início</Link></li>
-                            <li className="list-none"><Link href="/#planos" className="hover:text-[#FF0000] transition-colors">Planos</Link></li>
-                            <li className="list-none"><Link href="/#sobre" className="hover:text-[#FF0000] transition-colors">Sobre Nós</Link></li>
-                            <li className="list-none"><Link href="/politica-de-privacidade" className="hover:text-[#FF0000] transition-colors">Política de privacidade</Link></li>
+                            <li className="list-none">
+                                <Link href="/" onClick={(e) => handleScroll(e, "/")} className="hover:text-[#FF0000] transition-colors">Início</Link>
+                            </li>
+                            <li className="list-none">
+                                <Link href="/#planos" onClick={(e) => handleScroll(e, "/#planos")} className="hover:text-[#FF0000] transition-colors">Planos</Link>
+                            </li>
+                            <li className="list-none">
+                                <Link href="/#sobre" onClick={(e) => handleScroll(e, "/#sobre")} className="hover:text-[#FF0000] transition-colors">Sobre Nós</Link>
+                            </li>
+                            <li className="list-none">
+                                <Link href="/politica-de-privacidade" className="hover:text-[#FF0000] transition-colors">Política de privacidade</Link>
+                            </li>
                             <li className="list-none">
                                 <a href="/docs/contrato-melolink.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-[#FF0000] transition-colors inline-flex items-center gap-2">
                                     Contratos <ExternalLink size={12} />
@@ -53,7 +92,7 @@ export default function Footer() {
                         <h4 className="text-white font-bold uppercase tracking-wider mb-6 border-l-4 border-[#FF0000] pl-3">Contato</h4>
                         <ul className="space-y-4 text-sm text-gray-400 m-0 p-0">
                             <li className="list-none">
-                                <a href="https://maps.google.com/?q=Rua+Quinze+de+Novembro+131+Cubatao" target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 hover:text-[#FF0000] transition-colors group">
+                                <a href="https://maps.app.goo.gl/exemplo" target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 hover:text-[#FF0000] transition-colors group">
                                     <MapPin size={18} className="text-[#FF0000] group-hover:scale-110 transition-transform shrink-0" aria-hidden="true" />
                                     <span>R. Quinze de Novembro, 131 - Vila Nova, Cubatão - SP</span>
                                 </a>
