@@ -3,24 +3,74 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary: #FF0033  ;
 }
+
+/* --- ADICIONADO: Smooth Scroll Global --- */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Garante um respiro no topo ao navegar pelos IDs */
+section[id] {
+  scroll-margin-top: 5rem; /* Aproximadamente 80px */
+}
+/* ---------------------------------------- */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: 'Montserrat', sans-serif;
+  --font-display: 'Oswald', sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Otimização de Performance de Renderização */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer components {
+  .btn-primary {
+    @apply relative overflow-hidden text-white font-bold transition-all duration-300 px-6 py-3 rounded-xl;
+    background: linear-gradient(135deg, var(--primary) 0%, #ff4d6a 100%);
+    box-shadow: 0 5px 15px rgba(255, 0, 51, 0.3);
+  }
+
+  .btn-primary:hover {
+    @apply -translate-y-1 scale-[1.02] brightness-110;
+    box-shadow: 0 8px 25px rgba(255, 0, 51, 0.5);
+  }
+
+  .btn-dark {
+    @apply bg-[#050505ef] text-white font-bold transition-all duration-300 border border-white/10 px-6 py-3 rounded-xl;
+  }
+
+  .btn-dark:hover {
+    @apply bg-white text-[#FF0033] -translate-y-1 border-white;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  }
+}
+
+/* Máscaras e Efeitos */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 6s ease-in-out infinite;
 }

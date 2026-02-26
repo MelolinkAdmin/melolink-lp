@@ -1,0 +1,317 @@
+ <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+        <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,500;1,700;1,900&family=Oswald:wght@500;700&display=swap');
+
+        .font-sans { font-family: 'Montserrat', sans-serif; }
+        .font-display { font-family: 'Oswald', sans-serif; }
+
+        /* Keyframes de Animação - Elementos de Fundo */
+        @keyframes float {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
+        }
+        @keyframes rocketFly {
+          0% { left: -20%; opacity: 0; }
+          10% { opacity: 1; }
+          90% { opacity: 1; }
+          100% { left: 120%; opacity: 0; }
+        }
+        @keyframes pulseRotate {
+          0%, 100% { transform: translate(-50%, -50%) scale(1) rotate(-5deg); filter: drop-shadow(0 0 10px rgba(255,255,255,0.2)); }
+          50% { transform: translate(-50%, -50%) scale(1.05) rotate(25deg); filter: drop-shadow(0 0 20px rgba(255,255,255,0.5)); }
+        }
+        @keyframes pulseRotateReverse {
+          0%, 100% { transform: translate(-50%, -50%) scale(1) rotate(5deg); }
+          50% { transform: translate(-50%, -50%) scale(0.95) rotate(-25deg); }
+        }
+        @keyframes shimmer {
+          0% { transform: translateX(-150%) skewX(-15deg); }
+          100% { transform: translateX(150%) skewX(-15deg); }
+        }
+
+        /* NOVAS ANIMAÇÕES DE IMPACTO MÁXIMO (CINEMÁTICAS) */
+        @keyframes scaleInImpact {
+          0% { opacity: 0; transform: scale(0.85) translateY(40px); filter: blur(15px); }
+          100% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
+        }
+        @keyframes textRevealImpact {
+          0% { opacity: 0; transform: translateY(50px) skewY(4deg) scale(0.9); filter: blur(10px); }
+          100% { opacity: 1; transform: translateY(0) skewY(0deg) scale(1); filter: blur(0); }
+        }
+        @keyframes slideInRightImpact {
+          0% { opacity: 0; transform: translateX(200px) scale(1.1); filter: blur(10px); }
+          100% { opacity: 1; transform: translateX(0) scale(1); filter: blur(0); }
+        }
+        @keyframes powerOnFlash {
+          0% { opacity: 0; }
+          15% { opacity: 1; background-color: rgba(255, 255, 255, 0.8); box-shadow: inset 0 0 100px rgba(255,255,255,1); }
+          30% { opacity: 0.8; background-color: rgba(255, 0, 51, 0.4); }
+          100% { opacity: 0; background-color: transparent; }
+        }
+        
+        /* Ajuste da pulsação neon para mais legibilidade */
+        @keyframes neonPulse {
+          0%, 100% { text-shadow: 0 0 5px rgba(255,0,51,0.5), 0 0 15px rgba(255,0,51,0.4); }
+          50% { text-shadow: 0 0 8px rgba(255,255,255,0.7), 0 0 15px rgba(255,0,51,0.8), 0 0 25px rgba(255,0,51,0.6); }
+        }
+
+        /* Classes de Utilidade */
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        .animate-rocket-fly { animation: rocketFly 12s linear infinite; }
+        .animate-pulse-rotate { animation: pulseRotate 8s ease-in-out infinite; }
+        .animate-pulse-rotate-reverse { animation: pulseRotateReverse 10s ease-in-out infinite; }
+        .animate-shimmer { animation: shimmer 1.5s infinite; }
+        
+        /* Classes de Entrada (Impacto) */
+        /* Curva spring (mola) para dar aquele "pulo" ao aparecer */
+        .animate-scale-in-impact { animation: scaleInImpact 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards; }
+        .animate-text-reveal { animation: textRevealImpact 1s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards; opacity: 0; }
+        .animate-slide-in-right-impact { animation: slideInRightImpact 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards; opacity: 0; }
+        .animate-power-on { animation: powerOnFlash 1.5s ease-out forwards; }
+        .animate-neon-pulse { animation: neonPulse 2s ease-in-out infinite; }
+
+        /* Delays aprimorados */
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+        .delay-700 { animation-delay: 0.7s; }
+
+        /* Estilos Extras Hero */
+        .hero-bg-grid {
+          background-size: 40px 40px;
+          background-image: linear-gradient(to right, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+                            linear-gradient(to bottom, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+        }
+        .laser-beam {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 200%;
+          height: 2px;
+          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+          transform-origin: center;
+          opacity: 0.5;
+        }
+        .mask-image-linear {
+          -webkit-mask-image: linear-gradient(to right, transparent, black 15%);
+          mask-image: linear-gradient(to right, transparent, black 15%);
+        }
+
+        /* Botões Personalizados */
+        .btn-primary {
+          background: linear-gradient(135deg, #FF0033 0%, #ff4d6a 100%);
+          color: white;
+          transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          box-shadow: 0 5px 15px rgba(255, 0, 51, 0.4);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          position: relative;
+          overflow: hidden;
+        }
+        .btn-primary:hover {
+          transform: translateY(-4px) scale(1.03);
+          box-shadow: 0 0 30px rgba(255, 0, 51, 0.8), 0 0 60px rgba(255, 0, 51, 0.4);
+          filter: brightness(1.15);
+        }
+        .btn-dark {
+          background: rgba(5, 5, 5, 0.95);
+          color: white;
+          transition: all 0.3s ease;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .btn-dark:hover {
+          background: white;
+          color: #FF0033;
+          transform: translateY(-4px);
+          box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+          border-color: white;
+        }
+        
+        /* Navbar específica */
+        .nav-link {
+            color: #666;
+            font-weight: 500;
+            font-size: 15px;
+            font-style: italic;
+            transition: color 0.2s;
+            text-decoration: none;
+        }
+        .nav-link:hover { color: #FF0000; }
+        .btn-subscriber {
+            border: 1px solid #333;
+            background: white;
+            color: #333;
+            border-radius: 9999px;
+            padding: 8px 24px;
+            font-weight: 600;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        .btn-subscriber:hover { background-color: #f5f5f5; }
+        .btn-subscribe-now {
+            background-color: #FF0000;
+            color: white;
+            border-radius: 9999px;
+            padding: 10px 30px;
+            font-weight: 700;
+            font-size: 14px;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        .btn-subscribe-now:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 0, 0, 0.5);
+        }
+
+        /* Estilos Seção de Planos */
+        .card-shadow { box-shadow: 0 10px 40px rgba(0,0,0,0.05); }
+        .text-mega { color: #FF0000; font-style: italic; font-weight: 700; }
+        .badge-bestseller {
+            background-color: #FF0000;
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 4px;
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 6px rgba(255, 0, 0, 0.3);
+        }
+        .check-icon { color: #FF0000; margin-right: 10px; font-size: 14px; }
+        .btn-plan-gray {
+            background-color: #EAEAEA;
+            color: #333;
+            font-weight: 800;
+            width: 100%;
+            padding: 14px;
+            border-radius: 8px;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            transition: all 0.3s;
+        }
+        .btn-plan-gray:hover { background-color: #d1d1d1; }
+        .btn-plan-red {
+            background-color: #FF0000;
+            color: white;
+            font-weight: 800;
+            width: 100%;
+            padding: 14px;
+            border-radius: 8px;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
+            transition: all 0.3s;
+        }
+        .btn-plan-red:hover { background-color: #cc0000; transform: translateY(-2px); }
+        
+        .plan-tag-gray { background-color: #F3F4F6; color: #1F2937; padding: 6px 16px; border-radius: 999px; font-weight: 700; font-size: 14px; display: inline-block; }
+        .plan-tag-white { background-color: white; color: #1F2937; padding: 6px 16px; border-radius: 999px; font-weight: 700; font-size: 14px; display: inline-block; }
+        
+      `}</style>
+
+      {/* ================= HEADER / NAVBAR ================= */}
+      <Navbar/>
+
+      {/* ================= HERO SECTION (IMPACTO MÁXIMO) ================= */}
+      <section className="w-full max-w-[1400px] mx-auto px-4 md:px-8 pb-4 pt-4">
+        {/* Container principal animando a escala inteira e desfoque */}
+        <div className="relative w-full bg-gradient-to-br from-[#FF0033] via-[#c90025] to-[#730015] rounded-t-[30px] md:rounded-t-[50px] overflow-hidden min-h-[450px] md:min-h-[520px] flex items-center animate-scale-in-impact origin-bottom">
+          
+          {/* FLASH DE ENERGIA AO CARREGAR */}
+          <div className="absolute inset-0 z-40 pointer-events-none animate-power-on"></div>
+
+          <div className="absolute inset-0 hero-bg-grid z-0 opacity-90"></div>
+          
+          {/* Glows intensos */}
+          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-white rounded-full mix-blend-overlay filter blur-[150px] opacity-15 translate-x-1/4 -translate-y-1/4 animate-pulse"></div>
+          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-black rounded-full mix-blend-multiply filter blur-[120px] opacity-30 -translate-x-1/4 translate-y-1/4"></div>
+
+          {/* Lasers dinâmicos cruzando */}
+          <div className="absolute inset-0 flex items-center justify-center overflow-hidden opacity-60 pointer-events-none mix-blend-overlay">
+            <div className="laser-beam rotate-[35deg] animate-pulse"></div>
+            <div className="laser-beam -rotate-[35deg] animate-pulse" style={{ animationDelay: '0.3s' }}></div>
+            <div className="laser-beam rotate-90 animate-pulse" style={{ animationDelay: '0.8s' }}></div>
+          </div>
+
+          {/* Foguete Animado - Reposicionado e voando mais lentamente */}
+          <div className="absolute top-[5%] right-[0%] w-[60%] h-10 rotate-[20deg] z-10 pointer-events-none">
+            <div className="absolute top-1/2 -translate-y-1/2 animate-rocket-fly flex items-center">
+              <i className="fas fa-rocket text-white text-3xl rotate-45 filter drop-shadow-[0_0_20px_rgba(255,255,255,0.8)]"></i>
+              <div className="absolute right-full top-1/2 -translate-y-1/2 w-64 h-[3px] bg-gradient-to-r from-transparent via-white to-white opacity-80 mr-[-5px]"></div>
+            </div>
+          </div>
+          
+          <div className="absolute top-1/2 right-[4%] -translate-y-1/2 z-0 hidden md:block pointer-events-none mix-blend-overlay opacity-80">
+            <div className="w-[420px] h-[420px] border-2 border-white/50 rounded-full animate-pulse-rotate absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 shadow-[0_0_40px_rgba(255,255,255,0.2)]"></div>
+            <div className="w-[350px] h-[350px] border-4 border-white/80 rounded-full animate-pulse-rotate-reverse border-dashed absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 shadow-[0_0_20px_rgba(255,255,255,0.4)]"></div>
+          </div>
+          
+          <div className="relative z-20 w-full px-6 md:px-16 pt-8 pb-24">
+            <div className="max-w-4xl">
+              <div className="animate-text-reveal delay-200">
+                <span className="inline-block py-1.5 px-4 rounded-full bg-white/10 border border-white/30 backdrop-blur-md text-white font-bold text-[10px] md:text-xs uppercase tracking-widest mb-4 shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+                  <i className="fas fa-rocket mr-2 text-yellow-300"></i> Tecnologia Fibra Óptica 6.0
+                </span>
+              </div>
+              
+              <h1 className="text-4xl md:text-6xl lg:text-[76px] font-display font-black text-white leading-[0.92] tracking-tighter drop-shadow-xl">
+                <div className="animate-text-reveal delay-300">EXPERIMENTE</div>
+                <div className="animate-text-reveal delay-400">O FUTURO DA</div>
+                <div className="animate-text-reveal delay-500">
+                  {/* TEXTO CORRIGIDO: Cor sólida e efeito neon legível */}
+                  <span className="text-white animate-neon-pulse inline-block mt-2">
+                    CONECTIVIDADE
+                  </span>
+                </div>
+              </h1>
+            </div>
+          </div>
+
+          {/* SVG Divider */}
+          <div className="absolute bottom-0 left-0 w-full z-10 pointer-events-none">
+            <div className="absolute bottom-0 w-full translate-y-[2px]">
+              <svg viewBox="0 0 1440 120" fill="none" className="w-full h-auto block" preserveAspectRatio="none">
+                <path d="M0,64 C288,80 576,0 864,16 C1152,32 1440,80 1440,80 V120 H0 V64Z" fill="#FF0000"/>
+              </svg>
+            </div>
+            <div className="relative w-full translate-y-[1px]">
+              <svg viewBox="0 0 1440 120" fill="none" className="w-full h-auto block" preserveAspectRatio="none">
+                <path d="M0,74 C288,90 576,10 864,26 C1152,42 1440,90 1440,90 V120 H0 V74Z" fill="#ffffff"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-4 px-4 md:px-12 grid md:grid-cols-2 gap-8 items-center z-30">
+          <div className="flex flex-col sm:flex-row gap-4 justify-start md:justify-start w-full relative z-30 animate-text-reveal delay-700">
+            <button className="w-full sm:w-auto btn-dark px-8 py-3.5 rounded-xl font-bold text-base flex items-center justify-center gap-2 shadow-xl whitespace-nowrap">
+              Nossos Planos 
+            </button>
+            <button className="w-full sm:w-auto btn-primary px-8 py-3.5 rounded-xl font-bold text-base flex items-center justify-center gap-3 shadow-xl shadow-[#FF0033]/40 group whitespace-nowrap">
+              Assine Já
+              <i className="fas fa-play-circle text-lg group-hover:scale-110 transition-transform"></i>
+            </button>
+          </div>
+          
+          <div className="absolute top-20 right-0 md:right-[10%] lg:right-[12%] bottom-0 h-full w-auto object-cover object-right z-20 mask-image-linear animate-slide-in-right-impact delay-400 hidden md:block">
+            <img 
+              src="/fotobanner.png" 
+              className="h-full object-cover object-bottom drop-shadow-2xl" 
+              alt="Mulher Gamer VR" 
+            />
+          </div>
+        </div>
+      </section>
