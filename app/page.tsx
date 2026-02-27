@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 // Componentes críticos (Carregamento imediato - Primeira dobra da tela)
 import Hero from './src/components/sections/Hero/Index';
 import ServicosSection from './src/components/sections/Servicos/Index';
+import ReviewsSection from './src/components/sections/Reviews/Index';
 
 // OTIMIZAÇÃO: Seções pesadas e que exigem rolagem vão pro dynamic
 const PlansSection = dynamic(() => import('./src/components/sections/Planos/Index'));
@@ -40,6 +41,8 @@ export default function LandingPage() {
       <FaleConosco />
 
       <SpeedTestSection />
+
+      <ReviewsSection/>
     </main>
   );
 }
