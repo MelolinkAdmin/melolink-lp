@@ -81,7 +81,7 @@ export default function ReviewsSection() {
 
             <div className="flex justify-center mt-16">
                 <a 
-                    href="https://search.google.com/local/writereview?placeid=SEU_ID_DO_GOOGLE" 
+                    href="https://www.google.com/maps/place/Melolink+Internet+Fibra+%C3%93ptica/@-23.8923381,-46.420999,781m/data=!3m1!1e3!4m8!3m7!1s0x94ce10a00a2a4523:0x47b161280ff1f398!8m2!3d-23.8923381!4d-46.420999!9m1!1b1!16s%2Fg%2F11hbk9r0y0?entry=ttu&g_ep=EgoyMDI2MDIyNC4wIKXMDSoASAFQAw%3D%3D" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="group flex items-center gap-3 bg-[#0a0a14] text-white px-10 py-4 rounded-full font-bold hover:bg-red-600 transition-all duration-300 shadow-2xl hover:shadow-red-500/40"
@@ -92,4 +92,4 @@ export default function ReviewsSection() {
             </div>
         </section>
     );
-}
+}   
