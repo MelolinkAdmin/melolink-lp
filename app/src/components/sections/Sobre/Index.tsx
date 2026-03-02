@@ -6,7 +6,7 @@ import { Reveal } from '../../animations/Reveal'; // Wrapper reutilizável que c
 
 export default function Sobre() {
   return (
-    <section id="sobre" className="w-full py-16 lg:py-24 bg-gray-50 relative overflow-hidden">
+    <section id="sobre-nos" className="w-full py-16 lg:py-24 bg-gray-50 relative overflow-hidden">
       {/* Elemento vivo de fundo via CSS */}
       <div className="absolute top-0 right-0 w-80 h-80 bg-red-100/50 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3 pointer-events-none animate-pulse" />
 
@@ -17,16 +17,16 @@ export default function Sobre() {
           <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
             <Reveal>
               <div className="space-y-4 w-full mb-8">
-                <h3 className="text-[#FF0000] font-black tracking-[0.2em] uppercase text-xs flex items-center justify-center lg:justify-start gap-3">
+                <h2 className="text-[#FF0000] font-black tracking-[0.2em] uppercase text-xs flex items-center justify-center lg:justify-start gap-3">
                   <span className="w-12 h-[2px] bg-[#FF0000]" />
                   Sobre Nós
-                </h3>
-                <h2 className="text-4xl md:text-5xl font-black text-gray-900 leading-[1.1] tracking-tighter">
+                </h2>
+                <h3 className="text-4xl md:text-5xl font-black text-gray-900 leading-[1.1] tracking-tighter">
                   Conectando você ao <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF0000] to-[#990000]">
                     Mundo Digital
                   </span>
-                </h2>
+                </h3>
               </div>
             </Reveal>
 

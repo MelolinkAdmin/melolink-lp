@@ -15,7 +15,7 @@ const WHATSAPP_URL = `https://wa.me/551333721548?text=${encodeURIComponent("Olá
 export default function ProjetosEspeciais() {
   return (
     <section 
-      id="empresarial"
+      id="para-empresas"
       className="w-full py-16 lg:py-24 bg-white relative overflow-hidden antialiased"
       aria-labelledby="b2b-heading"
     >
@@ -55,19 +55,19 @@ export default function ProjetosEspeciais() {
           <div className="flex flex-col items-center lg:items-start text-center lg:text-left order-1 lg:order-2">
             <header className="space-y-4 w-full">
               <FadeIn>
-                <h3 className="text-[#FF0000] font-black tracking-[0.2em] uppercase text-sm flex items-center justify-center lg:justify-start gap-3 w-full">
+                <h2 className="text-[#FF0000] font-black tracking-[0.2em] uppercase text-sm flex items-center justify-center lg:justify-start gap-3 w-full">
                   <span className="w-12 h-[2px] bg-[#FF0000]" aria-hidden="true" />
-                  B2B & Enterprise
-                </h3>
+                  Para empresas
+                </h2>
               </FadeIn>
               
               <FadeIn>
-                <h2 id="b2b-heading" className="text-4xl md:text-5xl font-black text-gray-900 leading-[1.1] tracking-tighter">
+                <h3 id="b2b-heading" className="text-4xl md:text-5xl font-black text-gray-900 leading-[1.1] tracking-tighter">
                   Links Dedicados e <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF0000] to-[#900000]">
                     Projetos Especiais
                   </span>
-                </h2>
+                </h3>
               </FadeIn>
 
               <FadeIn>

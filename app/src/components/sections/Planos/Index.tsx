@@ -11,12 +11,12 @@ export default function PlansSection() {
       <div className="max-w-[1200px] mx-auto">
         
         <div className="text-center mb-12">
-          <h3 className="text-[#FF0000] font-medium italic text-xl mb-1">
+          <h2 className="text-[#FF0000] font-medium italic text-xl mb-1">
             Planos
-          </h3>
-          <h2 className="text-4xl md:text-5xl font-extrabold italic text-black tracking-tight">
-            Encontre a velocidade perfeita
           </h2>
+          <h3 className="text-4xl md:text-5xl font-extrabold italic text-black tracking-tight">
+            Encontre a velocidade perfeita
+          </h3>
         </div>
 
         {/* LazyMotion com domAnimation direto resolve o problema de invisibilidade */}
