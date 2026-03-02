@@ -66,7 +66,7 @@ const ServicoCard = memo(({ item }: { item: ServicoItem; index: number }) => {
           className={`fixed inset-0 m-auto w-fit h-fit z-[9999] px-6 transition-all duration-300 ${isOpen ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 translate-y-10 pointer-events-none'}`}
         >
           <div className="bg-white rounded-[2.5rem] shadow-2xl p-8 flex flex-col items-center min-w-[300px] border border-white/20">
-            <span className="text-gray-400 uppercase text-[10px] font-black tracking-[0.2em] mb-8">Siga a MeloLink</span>
+            <span className="text-gray-400 uppercase text-[10px] font-black tracking-[0.2em] mb-8">Siga a Melolink</span>
             
             <div className="flex gap-8 items-center justify-center">
                <SocialLinks size={40} />

@@ -16,7 +16,7 @@ export function SpeedTestSection() {
                   </span>
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Faça o teste agora e comprove a estabilidade, baixa latência e a verdadeira velocidade da fibra óptica da MeloLink.
+            Faça o teste agora e comprove a estabilidade, baixa latência e a verdadeira velocidade da fibra óptica da Melolink.
           </p>
         </div>
 
@@ -30,7 +30,7 @@ export function SpeedTestSection() {
 
           <iframe 
             src={speedTestUrl}
-            title="Teste de Velocidade MeloLink"
+            title="Teste de Velocidade Melolink"
             className="absolute top-0 left-0 w-full h-full border-none"
             allow="geolocation" // Permite que o teste encontre o servidor mais próximo
             loading="lazy" // Otimiza a performance da página (não carrega até o usuário rolar até aqui)

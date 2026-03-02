@@ -16,7 +16,7 @@ export default function ReviewsSection() {
                 </div>
                 
                 <h2 className="text-4xl md:text-6xl font-black text-[#0a0a14] tracking-tighter mb-6">
-                    O que dizem sobre a <span className="text-red-600">MeloLink</span>
+                    O que dizem sobre a <span className="text-red-600">Melolink</span>
                 </h2>
                 <p className="text-gray-500 text-lg max-w-2xl mx-auto leading-relaxed">
                     Nossa maior satisfação é conectar você com qualidade e velocidade. Confira os depoimentos verificados no Google.
@@ -33,7 +33,7 @@ export default function ReviewsSection() {
                    Usamos uma classe arbitrária para definir a animação sem precisar de config.
                    O 'translateX(-50%)' é o segredo do loop infinito.
                 */}
-                <div className="flex gap-8 py-4 w-max animate-[marquee_50s_linear_infinite] hover:[animation-play-state:paused]">
+                <div className="flex gap-8 py-4 w-max animate-[marquee_60s_linear_infinite] hover:[animation-play-state:paused]">
                     {scrollReviews.map((review, index) => (
                         <div
                             key={`${review.id}-${index}`}

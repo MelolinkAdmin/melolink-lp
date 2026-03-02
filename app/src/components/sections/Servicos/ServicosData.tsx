@@ -25,5 +25,5 @@ export const SERVICOS_DATA = [
     iconSlug: "suporte",
     href: "https://wa.me/5513996371382?text=Olá!%20Vim%20do%20site."
   },
-  { id: 4, title: "Nossas redes", description: "Siga a MeloLink", iconSlug: "redes", href: "#", isSocial: true }
+  { id: 4, title: "Nossas redes", description: "Siga a Melolink", iconSlug: "redes", href: "#", isSocial: true }
 ];

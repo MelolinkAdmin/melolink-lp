@@ -22,20 +22,22 @@ export default function Cobertura() {
                   Expansão Constante
                 </h3>
                 <h2 className="text-3xl md:text-4xl lg:text-[42px] font-black leading-[1.1] tracking-[-0.03em]">
-                  Cobertura <span className="text-white">MeloLink</span><br/> 
+                  Cobertura <span className="text-white">Melolink</span><br/> 
                   <span className="opacity-95">Cubatão</span>
                 </h2>
               </header>
             </FadeIn>
 
-            {/* Aqui usamos o wrapper para a lista de bairros */}
-            <StaggerContainer className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-1.5 text-[11px] md:text-[12.5px] font-bold text-white/90 mb-8">
-              {BAIRROS_CUBATAO.map((bairro) => (
-                <StaggerItem key={bairro}>
-                  <BairroItem nome={bairro} />
-                </StaggerItem>
-              ))}
-            </StaggerContainer>
+        
+<StaggerContainer className="columns-2 lg:columns-3 gap-x-12 mb-8 text-[11px] md:text-[12.5px] font-bold text-white/90">
+  {BAIRROS_CUBATAO.map((bairro) => (
+    <StaggerItem key={bairro}>
+      <div className="inline-block w-full break-inside-avoid mb-2">
+        <BairroItem nome={bairro} />
+      </div>
+    </StaggerItem>
+  ))}
+</StaggerContainer>
             
             <FadeIn>
               <div className="flex justify-start">
