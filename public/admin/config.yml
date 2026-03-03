@@ -1,10 +1,10 @@
 backend:
   name: git-gateway
   branch: main
+  site_domain: melolink-lp.netlify.app # Usamos o subdominio netlify como ponte
   identity_url: "https://melolink.netlify.app/.netlify/identity"
   gateway_url: "https://melolink.netlify.app/.netlify/git/gateway"
-  site_domain: melolink.com.br
-  
+
 media_folder: "public/images"
 public_folder: "/images"
 
@@ -14,7 +14,7 @@ collections:
     files:
       - label: "Planos de Internet"
         name: "planos"
-        file: "public/data/planos.json" # <--- MUDE ISSO (Tire o ../)
+        file: "public/data/planos.json"
         fields:
           - label: "Lista de Planos"
             name: "plans"
