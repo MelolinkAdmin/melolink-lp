@@ -1,72 +1,72 @@
 {
   "plans": [
     {
-      "id": "basico",
-      "title": "Plano Básico",
-      "speed": "450",
+      "color": "indigo",
       "unit": "Mega",
-      "price": "79,90",
+      "speed": "450",
+      "price": "79,91",
+      "theme": "light",
+      "isBestSeller": false,
+      "title": "Plano Básico",
+      "id": "basico",
       "benefits": [
         "Ideal para navegação diária",
         "Tecnologia Wi-Fi 6",
         "100% Fibra Óptica",
         "Equipamento Incluso"
       ],
-      "iconClass": "wifi",
-      "theme": "light",
-      "color": "indigo",
-      "isBestSeller": false
+      "iconClass": "wifi"
     },
     {
-      "id": "familia",
-      "title": "Plano Família",
-      "speed": "650",
+      "color": "red",
       "unit": "Mega",
+      "speed": "650",
       "price": "99,90",
+      "theme": "light",
+      "isBestSeller": false,
+      "title": "Plano Família",
+      "id": "familia",
       "benefits": [
         "Múltiplos dispositivos simultâneos",
         "Tecnologia Wi-Fi 6",
         "100% Fibra Óptica",
         "Equipamento Incluso"
       ],
-      "iconClass": "home",
-      "theme": "light",
-      "color": "red",
-      "isBestSeller": false
+      "iconClass": "home"
     },
     {
-      "id": "gamer",
-      "title": "Plano Gamer",
-      "speed": "850",
+      "color": "red",
       "unit": "Mega",
+      "speed": "850",
       "price": "119,90",
+      "theme": "light",
+      "isBestSeller": true,
+      "title": "Plano Gamer",
+      "id": "gamer",
       "benefits": [
         "Baixa latência (Ping Reduzido)",
         "Tecnologia Wi-Fi 6",
         "100% Fibra Óptica",
         "Equipamento Incluso"
       ],
-      "iconClass": "game",
-      "theme": "light",
-      "color": "red",
-      "isBestSeller": true
+      "iconClass": "game"
     },
     {
-      "id": "ultra",
-      "title": "Plano Ultra",
-      "speed": "1",
+      "color": "purple",
       "unit": "GIGA",
+      "speed": "1",
       "price": "139,90",
+      "theme": "light",
+      "isBestSeller": false,
+      "title": "Plano Ultra",
+      "id": "ultra",
       "benefits": [
         "Performance máxima de Upload",
         "Tecnologia Wi-Fi 6",
         "100% Fibra Óptica",
         "Equipamento Incluso"
       ],
-      "iconClass": "rocket",
-      "theme": "light",
-      "color": "purple",
-      "isBestSeller": false
+      "iconClass": "rocket"
     }
   ]
 }
