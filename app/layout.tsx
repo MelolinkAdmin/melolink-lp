@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 import Navbar from './src/components/sections/Navbar/Index';
 
@@ -66,6 +67,7 @@ export default function RootLayout({
         <Footer />
         <WhatsAppButton />
       </body>
+      <GoogleAnalytics gaId="G-5C53JBDXZ4" />
     </html>
   );
 }
