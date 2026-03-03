@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Painel Administrativo | Melolink</title>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <link rel="cms-config-url" type="text/yaml" href="/admin/config.yml" />
   </head>
   <body>
     <script>
-      // Configuração para permitir login fora do domínio .netlify.app
       if (window.netlifyIdentity) {
         window.netlifyIdentity.on("init", user => {
           if (!user) {
@@ -17,12 +17,10 @@
             });
           }
         });
-        
-        // ESSENCIAL: Diz ao painel na Vercel para autenticar via Netlify
+        // Proxy para o Netlify
         window.netlifyIdentity.setProxy('https://melolink.netlify.app');
       }
     </script>
-
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   </body>
 </html>
