@@ -1,3 +1,5 @@
+import planosJson from '@/public/data/planos.json';
+
 export interface Plan {
   id: string;
   title: string;
@@ -11,70 +13,5 @@ export interface Plan {
   isBestSeller?: boolean;
 }
 
-export const PLANS_DATA: Plan[] = [
-  {
-    id: 'basico',
-    title: 'Plano Básico',
-    speed: '450',
-    unit: 'Mega',
-    price: '79,90',
-    benefits: [
-      'Ideal para navegação diária', // Diferencial
-      'Tecnologia Wi-Fi 6',
-      '100% Fibra Óptica',
-      'Equipamento Incluso'
-    ],
-    iconClass: 'wifi', 
-    theme: 'light',
-    color: 'indigo',
-  },
-  {
-    id: 'familia',
-    title: 'Plano Família',
-    speed: '650',
-    unit: 'Mega',
-    price: '99,90',
-    benefits: [
-      'Múltiplos dispositivos simultâneos', // Diferencial
-      'Tecnologia Wi-Fi 6',
-      '100% Fibra Óptica',
-      'Equipamento Incluso'
-    ],
-    iconClass: 'home',
-    theme: 'light',
-    color: 'red',
-  },
-  {
-    id: 'gamer',
-    title: 'Plano Gamer',
-    speed: '850',
-    unit: 'Mega',
-    price: '119,90',
-    benefits: [
-      'Baixa latência (Ping Reduzido)',   
-      'Tecnologia Wi-Fi 6',
-      '100% Fibra Óptica',
-      'Equipamento Incluso'
-    ],
-    iconClass: 'game', 
-    theme: 'light',
-    isBestSeller: true,
-    color: 'red',
-  },
-  {
-    id: 'ultra',
-    title: 'Plano Ultra',
-    speed: '1',
-    unit: 'GIGA',
-    price: '139,90',
-    benefits: [
-      'Performance máxima de Upload', // Diferencial
-      'Tecnologia Wi-Fi 6',
-      '100% Fibra Óptica',
-      'Equipamento Incluso'
-    ],
-    iconClass: 'rocket',
-    theme: 'light',
-    color: 'purple',
-  },
-];
+export const PLANS_DATA = planosJson.plans as Plan[];
+

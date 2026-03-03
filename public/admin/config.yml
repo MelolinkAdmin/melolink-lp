@@ -1,0 +1,29 @@
+backend:
+  name: git-gateway
+  branch: main # Altere para sua branch principal
+
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  - name: "configuracoes"
+    label: "Configurações"
+    files:
+      - label: "Planos de Internet"
+        name: "planos"
+        file: "../data/planos.json" # Caminho do arquivo que criamos no passo 1
+        fields:
+          - label: "Lista de Planos"
+            name: "plans"
+            widget: "list"
+            fields:
+              - { label: "ID (slug)", name: "id", widget: "string" }
+              - { label: "Título", name: "title", widget: "string" }
+              - { label: "Velocidade", name: "speed", widget: "string" }
+              - { label: "Unidade (Mega/Giga)", name: "unit", widget: "string" }
+              - { label: "Preço", name: "price", widget: "string" }
+              - { label: "Ícone", name: "iconClass", widget: "select", options: ["wifi", "home", "game", "rocket", "zap", "tv", "globe"] }
+              - { label: "Tema", name: "theme", widget: "select", options: ["light", "dark"] }
+              - { label: "Cor", name: "color", widget: "select", options: ["indigo", "red", "purple"] }
+              - { label: "Mais Vendido?", name: "isBestSeller", widget: "boolean", default: false }
+              - { label: "Benefícios", name: "benefits", widget: "list" }
