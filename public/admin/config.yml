@@ -1,7 +1,8 @@
 backend:
   name: git-gateway
   branch: main
-  site_domain: melolink.com.br
+  site_domain: melolink.com.br # O CMS usará este domínio para as chamadas de API
+  display_url: https://www.melolink.com.br
 
 media_folder: "public/images"
 public_folder: "/images"
