@@ -5,6 +5,7 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { GoogleAnalytics } from '@next/third-parties/google'
+import Script from "next/script";
 
 import Navbar from './src/components/sections/Navbar/Index';
 
@@ -66,6 +67,25 @@ export default function RootLayout({
         <SpeedInsights/>
         <Footer />
         <WhatsAppButton />
+
+        {/* Injeção do Netlify Identity para funcionar na Vercel */}
+        <Script 
+          src="https://identity.netlify.com/v1/netlify-identity-widget.js" 
+          strategy="afterInteractive"
+        />
+        <Script id="netlify-identity-logic" strategy="afterInteractive">
+          {`
+            if (window.netlifyIdentity) {
+              window.netlifyIdentity.on("init", user => {
+                if (!user) {
+                  window.netlifyIdentity.on("login", () => {
+                    document.location.href = "/admin/";
+                  });
+                }
+              });
+            }
+          `}
+        </Script>
       </body>
       <GoogleAnalytics gaId="G-5C53JBDXZ4" />
     </html>
