@@ -7,14 +7,22 @@ import { NavLink } from './NavLink';
 import { NavButton } from './NavButton';
 import { NAV_LINKS } from './NavData';
 import { Menu, X, User } from 'lucide-react';
+import { sendGAEvent } from '@next/third-parties/google'; // 1. Importação necessária
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
-  // Link do WhatsApp com a mensagem: "Olá! Vim do site e gostaria de saber sobre os planos."
   const WHATSAPP_PLANOS_URL = "https://wa.me/551333721548?text=Olá!%20Vim%20do%20site%20e%20gostaria%20de%20saber%20sobre%20os%20planos.";
+
+  // 2. Função para rastrear os cliques
+  const trackClick = (eventName: string, label: string) => {
+    sendGAEvent('event', eventName, {
+      event_category: 'navigation',
+      event_label: label,
+    });
+  };
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href.includes('#')) {
@@ -81,11 +89,22 @@ export default function Navbar() {
             </div>
 
             <div className="hidden lg:flex items-center gap-4">
-              <NavButton href="https://melolink.portalinternet.com.br/radiusnet/cda/login.php" target='_blank' variant="outline">
+              <NavButton 
+                href="https://melolink.portalinternet.com.br/radiusnet/cda/login.php" 
+                target='_blank' 
+                variant="outline"
+                onClick={() => trackClick('login_area_assinante', 'Navbar Desktop')} // Rastreio Área do Assinante
+              >
                 <User size={18} /> Área do assinante
               </NavButton>
-              {/* Ajustado aqui no Desktop */}
-              <NavButton href={WHATSAPP_PLANOS_URL} target='_blank'>Assinar Agora</NavButton>
+              
+              <NavButton 
+                href={WHATSAPP_PLANOS_URL} 
+                target='_blank'
+                onClick={() => trackClick('contact_whatsapp', 'Botão Assinar Navbar Desktop')} // Rastreio WhatsApp
+              >
+                Assinar Agora
+              </NavButton>
             </div>
           </div>
 
@@ -112,11 +131,20 @@ export default function Navbar() {
             ))}
 
             <div className="flex flex-col gap-3 mt-4">
-              <NavButton href="https://melolink.portalinternet.com.br/radiusnet/cda/login.php" target="_blank" variant="outline">
+              <NavButton 
+                href="https://melolink.portalinternet.com.br/radiusnet/cda/login.php" 
+                target="_blank" 
+                variant="outline"
+                onClick={() => trackClick('login_area_assinante', 'Navbar Mobile')} // Rastreio Área do Assinante Mobile
+              >
                 <User size={18} /> Área do assinante
               </NavButton>
-              {/* Ajustado aqui no Mobile */}
-              <NavButton href={WHATSAPP_PLANOS_URL} target="_blank">
+
+              <NavButton 
+                href={WHATSAPP_PLANOS_URL} 
+                target="_blank"
+                onClick={() => trackClick('contact_whatsapp', 'Botão Assinar Navbar Mobile')} // Rastreio WhatsApp Mobile
+              >
                 Assinar Agora
               </NavButton>
             </div>

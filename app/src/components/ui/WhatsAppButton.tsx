@@ -1,25 +1,35 @@
+'use client' 
+
 import React from 'react';
+import { sendGAEvent } from '@next/third-parties/google' 
 
 export function WhatsAppButton() {
   const phoneNumber = "551333721548";
   const defaultMessage = "Olá! Vim do site.";
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(defaultMessage)}`;
 
+  // 2. Função para disparar o evento antes de abrir o link
+  const handleGAEvent = () => {
+    sendGAEvent('event', 'contact_whatsapp', { 
+      event_category: 'conversion',
+      event_label: 'Botão Flutuante',
+      value: 'Melolink_Cubatão'
+    });
+  };
+
   return (
-    // Adicionamos a classe 'group' aqui no container principal
     <div className="fixed bottom-6 right-6 z-50 flex items-center justify-end group">
         
       {/* Balãozinho de texto (Tooltip) */}
       <div className="absolute right-full mr-4 px-4 py-2 bg-white text-gray-800 text-sm font-semibold rounded-2xl shadow-xl border border-gray-100 opacity-0 translate-x-4 pointer-events-none transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 whitespace-nowrap flex items-center gap-2">
         Fale com a gente! 👋
-        
-        {/* Setinha (triângulo) do balão apontando para o ícone */}
         <div className="absolute top-1/2 -right-2 -translate-y-1/2 border-[6px] border-transparent border-l-white"></div>
       </div>
 
       {/* Botão do WhatsApp */}
       <a
         href={whatsappUrl}
+        onClick={handleGAEvent} // 3. Adiciona o gatilho aqui
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Fale conosco no WhatsApp"

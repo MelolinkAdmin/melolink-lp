@@ -6,6 +6,8 @@ import {
   Wifi, Gamepad2, Rocket, Zap, Star, Check, Home, MonitorPlay, Globe,
 } from 'lucide-react'; 
 import { Plan } from './PlanoData'; 
+import { sendGAEvent } from '@next/third-parties/google';
+
 
 interface PlanCardProps {
   plan: Plan;
@@ -53,6 +55,15 @@ const PlanCard = memo(({ plan, index }: PlanCardProps) => {
   const whatsappUrl = `https://wa.me/551333721548?text=${encodeURIComponent(
     `Olá! Tenho interesse no ${plan.title} de ${plan.speed} ${plan.unit}.`
   )}`;
+
+  // 2. Função de rastreamento personalizada para o card
+  const handlePlanClick = () => {
+    sendGAEvent('event', 'contact_whatsapp', {
+      event_category: 'conversion',
+      event_label: `Plano: ${plan.title} - ${plan.speed}${plan.unit}`, // Ex: Plano: Gamer - 700MEGA
+      value: plan.price // Opcional: envia o preço como valor numérico
+    });
+  };
 
   return (
     <m.li 
@@ -109,6 +120,7 @@ const PlanCard = memo(({ plan, index }: PlanCardProps) => {
         
         <a
           href={whatsappUrl}
+          onClick={handlePlanClick} // 3. Adicionar o evento de clique aqui
           target="_blank"
           rel="noopener noreferrer"
           className={`block text-center w-full py-4 rounded-2xl font-black text-[11px] tracking-widest transition-all duration-300 active:scale-95
