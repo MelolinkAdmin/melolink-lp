@@ -1,9 +1,10 @@
 backend:
   name: git-gateway
   branch: main
+  identity_url: "https://melolink.netlify.app/.netlify/identity"
+  gateway_url: "https://melolink.netlify.app/.netlify/git/gateway"
   site_domain: melolink.com.br
-  display_url: https://www.melolink.com.br
-
+  
 media_folder: "public/images"
 public_folder: "/images"
 

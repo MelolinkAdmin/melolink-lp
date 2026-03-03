@@ -1,0 +1,4 @@
+/*
+  Access-Control-Allow-Origin: https://www.melolink.com.br
+  Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT
+  Access-Control-Allow-Headers: Content-Type, Authorization
