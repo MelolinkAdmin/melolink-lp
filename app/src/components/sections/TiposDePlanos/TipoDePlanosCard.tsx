@@ -1,5 +1,9 @@
+'use client';
+
 import React, { memo } from 'react';
 import { TipoPlano, IconMap } from './TiposDePlanosData';
+// Importamos o JSON de contatos
+import contactsDataJson from "@/public/data/contatos.json";
 
 interface Props {
   item: TipoPlano;
@@ -9,6 +13,17 @@ interface Props {
 const TipoPlanoCard = memo(({ item, index }: Props) => {
   const Icon = IconMap[item.iconSlug] || IconMap['home'];
 
+  // 1. Buscamos o canal Comercial no JSON (ou usamos um fallback se não existir)
+  const comercialChannel = contactsDataJson.channels.find(
+    (c: any) => c.title.toLowerCase() === "comercial"
+  );
+
+  // 2. Extraímos apenas o número base (removendo tudo que vem depois da '?' no link do CMS)
+  // Se o link no CMS for "https://wa.me/551333721548?text=...", pegamos só o "551333721548"
+  const rawLink = comercialChannel?.link || "https://wa.me/551333721548";
+  const whatsappNumber = rawLink.split('?')[0].split('wa.me/')[1] || "551333721548";
+
+  // 3. Definimos as mensagens específicas para cada tipo de card
   const whatsappMessages: Record<string, string> = {
     home: "Olá! Gostaria de saber mais sobre os Planos Residenciais da MeloLink.",
     store: "Olá! Tenho interesse nos Planos Comerciais para minha empresa.",
@@ -16,7 +31,9 @@ const TipoPlanoCard = memo(({ item, index }: Props) => {
   };
 
   const message = encodeURIComponent(whatsappMessages[item.iconSlug] || "Olá! Gostaria de mais informações.");
-  const whatsappUrl = `https://wa.me/551333721548?text=${message}`;
+  
+  // 4. Montamos a URL final com o número vindo do CMS + a mensagem específica deste card
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
 
   return (
     <li 
@@ -27,9 +44,6 @@ const TipoPlanoCard = memo(({ item, index }: Props) => {
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        /* AJUSTE NO CLASSNAME: 
-           - Removido o hover: inicial e aplicado estilos fixos que viram hover apenas no MD (Desktop)
-        */
         className="flex flex-col items-center group p-6 rounded-2xl transition-all duration-300 outline-none focus-visible:ring-4 focus-visible:ring-[#FF0000]/20 
                    bg-white shadow-xl md:bg-transparent md:shadow-none md:hover:bg-white md:hover:shadow-xl"
         aria-label={`Saber mais sobre ${item.title}`}
@@ -56,7 +70,6 @@ const TipoPlanoCard = memo(({ item, index }: Props) => {
           {item.description}
         </p>
 
-        {/* Indicador Visual: Sempre visível no mobile (opacity-100), escondido por padrão no desktop */}
         <span className="text-[#FF0000] font-bold text-sm inline-flex items-center gap-2 
                          opacity-100 translate-y-0 
                          md:opacity-0 md:translate-y-2 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all">
@@ -67,4 +80,5 @@ const TipoPlanoCard = memo(({ item, index }: Props) => {
     </li>
   );
 });
+
 export default TipoPlanoCard;

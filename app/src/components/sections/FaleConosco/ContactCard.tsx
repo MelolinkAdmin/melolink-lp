@@ -1,7 +1,15 @@
 'use client';
 import { motion, Variants } from 'framer-motion';
-import { MessageCircle, Clock, Phone } from 'lucide-react';
-import { contactsData } from "./ContactsData";
+import { MessageCircle, Clock, Phone, Headset, ShoppingCart, Wallet } from 'lucide-react';
+// Importamos o JSON dinâmico
+import contactsDataJson from "@/public/data/contatos.json";
+
+// Mapeamento de nomes para Componentes Lucide
+const IconMap = {
+  'headset': <Headset className="w-8 h-8" />,
+  'shopping-cart': <ShoppingCart className="w-8 h-8" />,
+  'wallet': <Wallet className="w-8 h-8" />
+};
 
 const cardVariants: Variants = {
   hidden: { opacity: 0, scale: 0.95 },
@@ -13,9 +21,12 @@ const cardVariants: Variants = {
 };
 
 export default function ContactCard() {
+  // Pegamos a lista de canais do JSON
+  const channels = contactsDataJson.channels;
+
   return (
     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 m-0 p-0">
-      {contactsData.map((channel, index) => (
+      {channels.map((channel, index) => (
         <motion.li 
           key={channel.title}
           custom={index}
@@ -26,7 +37,6 @@ export default function ContactCard() {
           whileHover={{ y: -5 }}
           className="list-none flex flex-col group relative bg-white border border-gray-100 rounded-[24px] p-6 sm:p-8 transition-shadow duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:shadow-[0_15px_40px_rgb(238,29,35,0.12)]"
         >
-          {/* Efeito de borda pulsante apenas no Urgente */}
           {channel.primary && (
              <div className="absolute inset-0 rounded-[24px] border-2 border-[#EE1D23]/20 animate-pulse pointer-events-none" />
           )}
@@ -36,7 +46,8 @@ export default function ContactCard() {
               whileHover={{ rotate: 10 }}
               className="p-3.5 rounded-2xl bg-[#EE1D23]/10 text-[#EE1D23] shrink-0"
             >
-              {channel.icon}
+              {/* Aqui usamos o mapa para mostrar o ícone correto */}
+              {IconMap[channel.iconName as keyof typeof IconMap] || <Phone className="w-8 h-8" />}
             </motion.div>
             
             {channel.primary && (

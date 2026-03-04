@@ -3,7 +3,7 @@
 import React, { memo, useState, useEffect } from 'react';
 import { createPortal } from 'react-dom'; // <-- IMPORTANTE
 import { IconMap } from './ServicosData';
-import { X } from 'lucide-react'; 
+import { X } from 'lucide-react';
 import { SocialLinks } from '../../ui/SociaisLinks';
 
 export interface ServicoItem {
@@ -41,7 +41,7 @@ const ServicoCard = memo(({ item }: { item: ServicoItem; index: number }) => {
   useEffect(() => {
     setMounted(true);
     if (!isOpen) return;
-    
+
     const handleEsc = (e: KeyboardEvent) => e.key === 'Escape' && setIsOpen(false);
     window.addEventListener('keydown', handleEsc);
     document.body.style.overflow = 'hidden'; // Trava o scroll do app
@@ -56,20 +56,20 @@ const ServicoCard = memo(({ item }: { item: ServicoItem; index: number }) => {
     const modalJSX = (
       <>
         {/* Overlay - Ocupa a tela inteira do navegador */}
-        <div 
+        <div
           className={`fixed inset-0 w-full h-full bg-black/80 backdrop-blur-md z-[9998] transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
           onClick={() => setIsOpen(false)}
         />
-        
+
         {/* Modal - Centralizado no viewport (janela) */}
         <div
           className={`fixed inset-0 m-auto w-fit h-fit z-[9999] px-6 transition-all duration-300 ${isOpen ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 translate-y-10 pointer-events-none'}`}
         >
           <div className="bg-white rounded-[2.5rem] shadow-2xl p-8 flex flex-col items-center min-w-[300px] border border-white/20">
             <span className="text-gray-400 uppercase text-[10px] font-black tracking-[0.2em] mb-8">Siga a Melolink</span>
-            
+
             <div className="flex gap-8 items-center justify-center">
-               <SocialLinks size={40} />
+              <SocialLinks size={40} />
             </div>
 
             <button
@@ -101,21 +101,30 @@ const ServicoCard = memo(({ item }: { item: ServicoItem; index: number }) => {
 
   // Links normais (Fatura, Teste, etc)
   const handleInternalScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    // Verifica se o link começa com # para fazer scroll suave
     if (href.startsWith('#')) {
-      const element = document.getElementById(href.replace('#', ''));
+      const id = href.replace('#', '');
+      const element = document.getElementById(id);
       if (element) {
         e.preventDefault();
-        window.scrollTo({ top: element.getBoundingClientRect().top + window.pageYOffset - 100, behavior: 'smooth' });
+        const offset = 100;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
       }
     }
   };
 
   return (
     <li className="flex-1 w-full list-none">
-      <a 
-        href={item.href} 
-        target={item.href.startsWith('#') ? "_self" : "_blank"} 
-        rel="noopener noreferrer" 
+      <a
+        href={item.href}
+        target={item.href.startsWith('#') ? "_self" : "_blank"}
+        rel="noopener noreferrer"
         className="block group"
         onClick={(e) => handleInternalScroll(e, item.href)}
       >

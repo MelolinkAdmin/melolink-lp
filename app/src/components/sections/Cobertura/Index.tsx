@@ -1,13 +1,29 @@
-// Cobertura.tsx (Server Component por padrão)
+// Cobertura.tsx
 import React from 'react';
 import { MessageCircle } from 'lucide-react';
 import Image from 'next/image';
 import BairroItem from './BairroItem';
 import { BAIRROS_CUBATAO } from './CoberturaData';
-import { FadeIn, StaggerContainer, StaggerItem } from '../../animations/motion-wraper'; // Seu wrapper
+import { FadeIn, StaggerContainer, StaggerItem } from '../../animations/motion-wraper';
+
+// Importação do JSON para tornar o link dinâmico
+import contactsDataJson from "@/public/data/contatos.json";
 
 export default function Cobertura() {
-  const whatsappUrl = `https://wa.me/551333721548?text=${encodeURIComponent("Olá! Vi no site...")}`;
+  /**
+   * LÓGICA DINÂMICA:
+   * 1. Busca o canal comercial.
+   * 2. Extrai o número base do link salvo no CMS.
+   */
+  const comercialChannel = contactsDataJson.channels.find(
+    (c: any) => c.title.toLowerCase() === "comercial"
+  );
+  
+  const rawLink = comercialChannel?.link || "https://wa.me/551333721548";
+  const whatsappNumber = rawLink.split('?')[0].split('wa.me/')[1] || "551333721548";
+  
+  const message = encodeURIComponent("Olá! Vi no site a lista de bairros e gostaria de consultar a disponibilidade no meu endereço.");
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
 
   return (
     <section id="cobertura" className="w-full lg:h-[500px] bg-[#FF0000] relative overflow-hidden text-white flex items-center py-10 lg:py-0 antialiased">
@@ -28,20 +44,24 @@ export default function Cobertura() {
               </header>
             </FadeIn>
 
-        
-<StaggerContainer className="columns-2 lg:columns-3 gap-x-12 mb-8 text-[11px] md:text-[12.5px] font-bold text-white/90">
-  {BAIRROS_CUBATAO.map((bairro) => (
-    <StaggerItem key={bairro}>
-      <div className="inline-block w-full break-inside-avoid mb-2">
-        <BairroItem nome={bairro} />
-      </div>
-    </StaggerItem>
-  ))}
-</StaggerContainer>
+            <StaggerContainer className="columns-2 lg:columns-3 gap-x-12 mb-8 text-[11px] md:text-[12.5px] font-bold text-white/90">
+              {BAIRROS_CUBATAO.map((bairro) => (
+                <StaggerItem key={bairro}>
+                  <div className="inline-block w-full break-inside-avoid mb-2">
+                    <BairroItem nome={bairro} />
+                  </div>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
             
             <FadeIn>
               <div className="flex justify-start">
-                <a href={whatsappUrl} className="group bg-[#0B1120] text-white px-8 py-4 rounded-full font-black text-[12px] shadow-2xl hover:scale-105 active:scale-95 transition-all flex items-center gap-3">
+                <a 
+                  href={whatsappUrl} 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group bg-[#0B1120] text-white px-8 py-4 rounded-full font-black text-[12px] shadow-2xl hover:scale-105 active:scale-95 transition-all flex items-center gap-3"
+                >
                   <MessageCircle size={18} fill="currentColor" />
                   CONSULTAR DISPONIBILIDADE
                 </a>
@@ -49,9 +69,8 @@ export default function Cobertura() {
             </FadeIn>
           </div>
 
-          {/* Lado Direito: CSS PURO para performance máxima */}
+          {/* Lado Direito: Imagem */}
           <div className="relative h-[450px] hidden lg:flex items-center justify-end">
-            {/* A classe animate-float resolve o "vivo" sem JS */}
             <div className="relative w-full h-[480px] top-4 animate-float will-change-transform">
               <Image 
                 src="/CelularLocalizacao.webp" 

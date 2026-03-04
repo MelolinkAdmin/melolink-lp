@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
@@ -7,16 +7,27 @@ import { NavLink } from './NavLink';
 import { NavButton } from './NavButton';
 import { NAV_LINKS } from './NavData';
 import { Menu, X, User } from 'lucide-react';
-import { sendGAEvent } from '@next/third-parties/google'; // 1. Importação necessária
+import { sendGAEvent } from '@next/third-parties/google';
+
+// Importação do JSON de contatos dinâmicos
+import contactsDataJson from "@/public/data/contatos.json";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
-  const WHATSAPP_PLANOS_URL = "https://wa.me/551333721548?text=Olá!%20Vim%20do%20site%20e%20gostaria%20de%20saber%20sobre%20os%20planos.";
+  /**
+   * LÓGICA DINÂMICA:
+   * Busca no JSON o canal que tem o título "Comercial". 
+   * Se não encontrar (ou o JSON estiver vazio), usa o link padrão como fallback.
+   */
+  const comercialChannel = contactsDataJson.channels.find(
+    (c: any) => c.title.toLowerCase() === "comercial"
+  );
+  
+  const WHATSAPP_PLANOS_URL = comercialChannel?.link || "https://wa.me/551333721548?text=Olá!";
 
-  // 2. Função para rastrear os cliques
   const trackClick = (eventName: string, label: string) => {
     sendGAEvent('event', eventName, {
       event_category: 'navigation',
@@ -93,7 +104,7 @@ export default function Navbar() {
                 href="https://melolink.portalinternet.com.br/radiusnet/cda/login.php" 
                 target='_blank' 
                 variant="outline"
-                onClick={() => trackClick('login_area_assinante', 'Navbar Desktop')} // Rastreio Área do Assinante
+                onClick={() => trackClick('login_area_assinante', 'Navbar Desktop')}
               >
                 <User size={18} /> Área do assinante
               </NavButton>
@@ -101,7 +112,7 @@ export default function Navbar() {
               <NavButton 
                 href={WHATSAPP_PLANOS_URL} 
                 target='_blank'
-                onClick={() => trackClick('contact_whatsapp', 'Botão Assinar Navbar Desktop')} // Rastreio WhatsApp
+                onClick={() => trackClick('contact_whatsapp', 'Botão Assinar Navbar Desktop')}
               >
                 Assinar Agora
               </NavButton>
@@ -135,7 +146,7 @@ export default function Navbar() {
                 href="https://melolink.portalinternet.com.br/radiusnet/cda/login.php" 
                 target="_blank" 
                 variant="outline"
-                onClick={() => trackClick('login_area_assinante', 'Navbar Mobile')} // Rastreio Área do Assinante Mobile
+                onClick={() => trackClick('login_area_assinante', 'Navbar Mobile')}
               >
                 <User size={18} /> Área do assinante
               </NavButton>
@@ -143,7 +154,7 @@ export default function Navbar() {
               <NavButton 
                 href={WHATSAPP_PLANOS_URL} 
                 target="_blank"
-                onClick={() => trackClick('contact_whatsapp', 'Botão Assinar Navbar Mobile')} // Rastreio WhatsApp Mobile
+                onClick={() => trackClick('contact_whatsapp', 'Botão Assinar Navbar Mobile')}
               >
                 Assinar Agora
               </NavButton>

@@ -1,0 +1,36 @@
+{
+  "channels": [
+    {
+      "title": "Suporte",
+      "iconName": "headset",
+      "phone": "(13) 99637-1382",
+      "link": "https://wa.me/5513996371382?text=Olá!%20Vim%20do%20site%20e%20preciso%20de%20suporte%20técnico.",
+      "primary": false,
+      "hours": [
+        { "day": "Segunda a Sábado", "time": "08h30 até 17h30" }
+      ]
+    },
+    {
+      "title": "Comercial",
+      "iconName": "shopping-cart",
+      "phone": "(13) 3372-1548",
+      "link": "https://wa.me/551333721548?text=Olá!%20Vim%20do%20site%20e%20gostaria%20de%20conhecer%20os%20planos.",
+      "primary": false,
+      "hours": [
+        { "day": "Segunda à Sexta", "time": "08h30 até 17h30" },
+        { "day": "Sábado", "time": "08h30 até 12h30" }
+      ]
+    },
+    {
+      "title": "Financeiro",
+      "iconName": "wallet",
+      "phone": "(13) 99641-3376",
+      "link": "https://wa.me/5513996413376?text=Olá!%20Vim%20do%20site%20e%20gostaria%20de%20falar%20com%20o%20financeiro.",
+      "primary": false,
+      "hours": [
+        { "day": "Segunda à Sexta", "time": "08h30 até 17h30" },
+        { "day": "Sábado", "time": "08h30 até 12h30" }
+      ]
+    }
+  ]
+}

@@ -4,15 +4,30 @@ import Image from 'next/image';
 import { Button } from '../../ui/Button';
 import { FadeIn, StaggerContainer, StaggerItem } from '../../animations/motion-wraper';
 
+// Importação do JSON para tornar o link dinâmico
+import contactsDataJson from "@/public/data/contatos.json";
+
 const EMPRESA_FEATURES = [
   { title: "Níveis de Serviço (SLA):", desc: "Monitoramento contínuo e garantia de estabilidade." },
   { title: "Soluções Personalizadas:", desc: "Projetos que atendem à necessidade específica da sua empresa." },
   { title: "Cobertura Empresarial:", desc: "Atendemos a todos os portes de empresas na nossa região." }
 ];
 
-const WHATSAPP_URL = `https://wa.me/551333721548?text=${encodeURIComponent("Olá! Gostaria de falar com um consultor sobre Links Dedicados...")}`;
-
 export default function ProjetosEspeciais() {
+  /**
+   * LÓGICA DINÂMICA:
+   * Busca o canal comercial para tratar as vendas B2B.
+   */
+  const comercialChannel = contactsDataJson.channels.find(
+    (c: any) => c.title.toLowerCase() === "comercial"
+  );
+  
+  const rawLink = comercialChannel?.link || "https://wa.me/551333721548";
+  const whatsappNumber = rawLink.split('?')[0].split('wa.me/')[1] || "551333721548";
+  
+  const message = encodeURIComponent("Olá! Gostaria de falar com um consultor sobre Links Dedicados e Projetos Especiais para minha empresa.");
+  const WHATSAPP_URL = `https://wa.me/${whatsappNumber}?text=${message}`;
+
   return (
     <section 
       id="para-empresas"
@@ -22,7 +37,7 @@ export default function ProjetosEspeciais() {
       <div className="max-w-[1200px] mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
-          {/* COLUNA: IMAGEM (order-2 no mobile / order-1 no desktop) */}
+          {/* COLUNA: IMAGEM */}
           <div className="relative order-2 lg:order-1">
             <FadeIn>
               <div className="relative group h-[320px] md:h-[400px] lg:h-[500px] w-full">
@@ -51,7 +66,7 @@ export default function ProjetosEspeciais() {
             </FadeIn>
           </div>
 
-          {/* COLUNA: TEXTO E CONTEÚDO (order-1 no mobile / order-2 no desktop) */}
+          {/* COLUNA: TEXTO E CONTEÚDO */}
           <div className="flex flex-col items-center lg:items-start text-center lg:text-left order-1 lg:order-2">
             <header className="space-y-4 w-full">
               <FadeIn>
