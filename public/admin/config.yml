@@ -2,8 +2,6 @@ backend:
   name: git-gateway
   branch: main
   site_domain: melolink-lp.netlify.app
-  identity_url: https://melolink.netlify.app/.netlify/identity
-  gateway_url: https://melolink.netlify.app/.netlify/git/gateway
 
 media_folder: "public/images"
 public_folder: "/images"
@@ -38,7 +36,11 @@ collections:
                 widget: "select"
                 options: ["indigo", "red", "purple"]
               - { label: "Mais Vendido?", name: "isBestSeller", widget: "boolean", default: false }
-              - { label: "Benefícios", name: "benefits", widget: "list" }
+              - label: "Benefícios"
+                name: "benefits"
+                widget: "list"
+                # Corrigido: Agora o CMS sabe que deve salvar uma lista de textos
+                field: { label: "Benefício", name: "text", widget: "string" }
 
       - label: "Contatos e Canais"
         name: "contatos"
