@@ -51,7 +51,7 @@ export default function Sobre() {
                   Nossa Missão
                 </h4>
                 <p className="text-gray-700 italic font-medium leading-relaxed text-sm md:text-base">
-                  "Ser uma equipe reconhecida pelo seu diferencial de atendimento..."
+                  "Ser uma equipe reconhecida pelo seu diferencial de atendimento"
                 </p>
               </div>
             </Reveal>
