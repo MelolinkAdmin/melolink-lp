@@ -144,7 +144,7 @@ export default function Footer() {
                 {/* Copyright */}
                 <div className="text-center text-xs text-gray-600 pt-8 border-t border-gray-900 flex flex-col md:flex-row justify-between items-center gap-4">
                     <p>Copyright © {currentYear} MELOLINK INTERNET FIBRA OPTICA LTDA</p>
-                    <p>Desenvolvido por <a href="#" className="text-gray-400 hover:text-white font-semibold">Thiago Militão</a></p>
+                    <p>Desenvolvido por <a href="https://thiagomilitao.vercel.app/" className="text-gray-400 hover:text-white font-semibold">Thiago Militão</a></p>
                 </div>
             </div>
         </footer>
