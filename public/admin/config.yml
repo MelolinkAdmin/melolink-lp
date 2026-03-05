@@ -2,6 +2,9 @@ backend:
   name: git-gateway
   branch: main
   site_domain: melolink-lp.netlify.app
+  commit_author:
+    name: "ThiagoMilitao"
+    email: "thiago.militao2007@gmail.com"
 
 media_folder: "public/images"
 public_folder: "/images"
