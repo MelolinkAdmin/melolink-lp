@@ -7,6 +7,7 @@ backend:
   
 publish_mode: simple 
 
+# Ajustado para o padrão de busca do navegador
 media_folder: "public/images"
 public_folder: "/images"
 
@@ -16,7 +17,7 @@ collections:
     files:
       - label: "Planos de Internet"
         name: "planos"
-        file: "public/data/planos.json"
+        file: "data/planos.json" # Corrigido: removido 'public/'
         fields:
           - label: "Lista de Planos"
             name: "plans"
@@ -47,7 +48,7 @@ collections:
 
       - label: "Contatos e Canais"
         name: "contatos"
-        file: "public/data/contatos.json"
+        file: "data/contatos.json" # Corrigido: removido 'public/'
         fields:
           - label: "Canais de Atendimento"
             name: "channels"
@@ -72,7 +73,7 @@ collections:
 
       - label: "Redes Sociais"
         name: "social"
-        file: "public/data/social.json"
+        file: "data/social.json" # Corrigido: removido 'public/'
         fields:
           - { label: "Instagram", name: "instagram", widget: "string" }
           - { label: "TikTok", name: "tiktok", widget: "string" }
