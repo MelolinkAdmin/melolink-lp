@@ -1,10 +1,11 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: thiagoMilitao/melolink-lp 
   branch: main
-  site_domain: melolink-lp.netlify.app
-  commit_author:
-    name: "ThiagoMilitao"
-    email: "thiago.militao2007@gmail.com"
+  base_url: https://api.netlify.com 
+  auth_endpoint: auth
+  
+publish_mode: simple 
 
 media_folder: "public/images"
 public_folder: "/images"
@@ -42,7 +43,6 @@ collections:
               - label: "Benefícios"
                 name: "benefits"
                 widget: "list"
-                # Corrigido: Agora o CMS sabe que deve salvar uma lista de textos
                 field: { label: "Benefício", name: "text", widget: "string" }
 
       - label: "Contatos e Canais"
@@ -63,7 +63,6 @@ collections:
                   - { label: "Financeiro (Carteira)", value: "wallet" }
               - { label: "Telefone Exibido", name: "phone", widget: "string" }
               - { label: "Link do WhatsApp (api.whatsapp.com)", name: "link", widget: "string" }
-              - { label: "Marcar como Urgente?", name: "primary", widget: "boolean", default: false }
               - label: "Horários"
                 name: "hours"
                 widget: "list"
