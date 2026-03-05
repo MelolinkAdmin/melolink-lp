@@ -2,7 +2,7 @@ backend:
   name: github
   repo: thiagoMilitao/melolink-lp 
   branch: main
-  base_url: https://api.netlify.com 
+  base_url: https://decap-cms-github-backend.vercel.app
   auth_endpoint: auth
   
 publish_mode: simple 
