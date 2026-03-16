@@ -59,15 +59,42 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "WebSite",
+                  "name": "Melolink",
+                  "url": "https://melolink.com.br",
+                },
+                {
+                  "@type": "SiteNavigationElement",
+                  "hasPart": [
+                    { "@type": "WebPage", "name": "Área do Assinante", "url": "https://melolink.com.br/assinante" },
+                    { "@type": "WebPage", "name": "Planos de Internet", "url": "https://melolink.com.br/planos" },
+                    { "@type": "WebPage", "name": "Para Empresas", "url": "https://melolink.com.br/para-empresas" },
+                    { "@type": "WebPage", "name": "Sobre Nós", "url": "https://melolink.com.br/sobre" },
+                    { "@type": "WebPage", "name": "Fale Conosco", "url": "https://melolink.com.br/contato" }
+                  ]
+                }
+              ]
+            }),
+          }}
+        />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Navbar />
         {children}
         <Analytics />
-        <SpeedInsights/>
+        <SpeedInsights />
         <Footer />
         <WhatsAppButton />
+        <GoogleAnalytics gaId="G-5C53JBDXZ4" />
       </body>
-      <GoogleAnalytics gaId="G-5C53JBDXZ4" />
     </html>
   );
 }

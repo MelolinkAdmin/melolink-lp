@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic';
 import Hero from './src/components/sections/Hero/Index';
 import ServicosSection from './src/components/sections/Servicos/Index';
 import ReviewsSection from './src/components/sections/Reviews/Index';
+import ScrollHandler from './src/components/animations/ScrollHandler';
 
 // OTIMIZAÇÃO: Seções pesadas e que exigem rolagem vão pro dynamic
 const PlansSection = dynamic(() => import('./src/components/sections/Planos/Index'));
@@ -20,7 +21,7 @@ const SpeedTestSection = dynamic(() => import('./src/components/sections/SpeedTe
 export default function LandingPage() {
   return (
     <main className="bg-white text-gray-800 font-sans overflow-x-hidden antialiased">
-      
+      <ScrollHandler/>
       <Hero />
       
       <ServicosSection />
