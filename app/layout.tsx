@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   description: "Conecte-se com a ultravelocidade da Melolink em Cubatão. Internet fibra óptica estável e moderna para sua casa ou empresa. Conheça nossos planos!",
   metadataBase: new URL('https://www.melolink.com.br'),
   alternates: {
-    canonical: '/',
+    canonical: 'https://www.melolink.com.br',
   },
   robots: {
     index: true,
