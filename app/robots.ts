@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/private/',
     },
-    sitemap: 'https://melolink.com.br/sitemap.xml',
+    sitemap: 'https://www.melolink.com.br/sitemap.xml',
   }
 }

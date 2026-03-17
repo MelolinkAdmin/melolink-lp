@@ -24,7 +24,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Melolink – Dê um UP na sua conexão",
   description: "Conecte-se com a ultravelocidade da Melolink em Cubatão. Internet fibra óptica estável e moderna para sua casa ou empresa. Conheça nossos planos!",
-  metadataBase: new URL('https://melolink.com.br'),
+  metadataBase: new URL('https://www.melolink.com.br'),
   alternates: {
     canonical: '/',
   },
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Melolink – A internet que você merece",
     description: "Fibra óptica de alta performance em Cubatão.",
-    url: 'https://melolink.com.br',
+    url: 'https://www.melolink.com.br',
     siteName: 'Melolink',
     locale: 'pt_BR',
     type: 'website',
@@ -69,16 +69,16 @@ export default function RootLayout({
                 {
                   "@type": "WebSite",
                   "name": "Melolink",
-                  "url": "https://melolink.com.br",
+                  "url": "https://www.melolink.com.br",
                 },
                 {
                   "@type": "SiteNavigationElement",
                   "hasPart": [
-                    { "@type": "WebPage", "name": "Área do Assinante", "url": "https://melolink.com.br/assinante" },
-                    { "@type": "WebPage", "name": "Planos de Internet", "url": "https://melolink.com.br/planos" },
-                    { "@type": "WebPage", "name": "Para Empresas", "url": "https://melolink.com.br/para-empresas" },
-                    { "@type": "WebPage", "name": "Sobre Nós", "url": "https://melolink.com.br/sobre" },
-                    { "@type": "WebPage", "name": "Fale Conosco", "url": "https://melolink.com.br/contato" }
+                    { "@type": "WebPage", "name": "Área do Assinante", "url": "https://www.melolink.com.br/assinante" },
+                    { "@type": "WebPage", "name": "Planos de Internet", "url": "https://www.melolink.com.br/planos" },
+                    { "@type": "WebPage", "name": "Para Empresas", "url": "https://www.melolink.com.br/para-empresas" },
+                    { "@type": "WebPage", "name": "Sobre Nós", "url": "https://www.melolink.com.br/sobre" },
+                    { "@type": "WebPage", "name": "Fale Conosco", "url": "https://www.melolink.com.br/contato" }
                   ]
                 }
               ]

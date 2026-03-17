@@ -1,5 +1,5 @@
 export default function sitemap() {
-  const baseUrl = 'https://melolink.com.br';
+  const baseUrl = 'https://www.melolink.com.br';
   const lastModified = new Date();
 
   return [
