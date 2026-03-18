@@ -16,7 +16,6 @@ const FibraOptica = dynamic(() => import('./src/components/sections/FibraOptica'
 const Sobre = dynamic(() => import('./src/components/sections/Sobre/Index'));
 const FaleConosco = dynamic(() => import('./src/components/sections/FaleConosco/Index'));
 
-const SpeedTestSection = dynamic(() => import('./src/components/sections/SpeedTestSection').then(mod => mod.SpeedTestSection)); 
 
 export default function LandingPage() {
   return (
@@ -40,8 +39,6 @@ export default function LandingPage() {
       <Sobre />
 
       <FaleConosco />
-
-      <SpeedTestSection />
 
       <ReviewsSection/>
     </main>
