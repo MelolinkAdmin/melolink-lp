@@ -129,7 +129,7 @@ export default function ContactForm() {
                 <CheckCircle size={12} className="text-red-600" /> Já é cliente? <span className="text-red-600">*</span>
               </label>
               <select name="isClient" required className="w-full bg-gray-50 border border-gray-100 p-3.5 rounded-xl text-sm focus:ring-2 focus:ring-red-600/10 focus:border-red-600 outline-none appearance-none cursor-pointer">
-                <option value="" disabled selected>Escolha</option>
+                <option value=" " disabled selected>Escolha</option>
                 <option value="sim">Sim</option>
                 <option value="nao">Não</option>
               </select>
@@ -157,7 +157,7 @@ export default function ContactForm() {
             />
           </div>
           
-          <button type="submit" disabled={isPending} className="group mt-4 bg-[#0a0a14] text-white font-bold py-4 rounded-xl transition-all hover:bg-red-600 active:scale-[0.98] disabled:opacity-50 flex items-center justify-center gap-2">
+          <button type="submit" disabled={isPending} className="group mt-4 bg-[#0a0a14] text-white font-bold py-4 rounded-xl transition-all hover:bg-red-600 active:scale-[0.98] disabled:opacity-50 flex items-center justify-center gap-2 cursor-pointer">
             {isPending ? <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" /> : <>Enviar Solicitação <Send size={16} /></>}
           </button>
 
