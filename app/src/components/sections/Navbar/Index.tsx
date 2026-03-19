@@ -8,8 +8,6 @@ import { NavButton } from './NavButton';
 import { NAV_LINKS } from './NavData';
 import { Menu, X, User } from 'lucide-react';
 import { sendGAEvent } from '@next/third-parties/google';
-
-// Importação do JSON de contatos dinâmicos
 import contactsDataJson from "@/public/data/contatos.json";
 
 export default function Navbar() {
@@ -17,11 +15,19 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
-  /**
-   * LÓGICA DINÂMICA:
-   * Busca no JSON o canal que tem o título "Comercial". 
-   * Se não encontrar (ou o JSON estiver vazio), usa o link padrão como fallback.
-   */
+  // Bloqueio de Scroll
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    // Cleanup para garantir que o scroll volte se o componente desmontar
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
   const comercialChannel = contactsDataJson.channels.find(
     (c: any) => c.title.toLowerCase() === "comercial"
   );
@@ -85,7 +91,6 @@ export default function Navbar() {
             <Logo variant="black" height={60} />
           </Link>
 
-          {/* Desktop Menu */}
           <div className="flex gap-6 items-center">
             <div className="hidden lg:flex gap-8">
               {NAV_LINKS.map((link) => (
@@ -119,41 +124,45 @@ export default function Navbar() {
             </div>
           </div>
 
-          <button onClick={toggleMenu} className="lg:hidden p-2 z-50">
-            {isOpen ? <X size={30} /> : <Menu size={30} />}
+          <button onClick={toggleMenu} className="lg:hidden p-2 z-50 relative">
+            {isOpen ? <X size={30} className="text-[#EE1D23]" /> : <Menu size={30} />}
           </button>
         </div>
 
         {/* Mobile Menu */}
         <div className={`
-          absolute top-full left-0 w-full bg-white border-t shadow-xl lg:hidden transition-all duration-300
-          ${isOpen ? "translate-y-0 opacity-100" : "-translate-y-4 opacity-0 pointer-events-none"}
+          fixed top-[72px] left-0 w-full h-[calc(100vh-72px)] bg-white lg:hidden transition-all duration-300 z-50 overflow-y-auto
+          ${isOpen ? "translate-x-0 opacity-100" : "translate-x-full opacity-0 pointer-events-none"}
         `}>
-          <div className="flex flex-col p-6 gap-2 bg-white">
+          <div className="flex flex-col p-8 gap-4 bg-white min-h-full">
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-400 mb-2">Navegação</span>
+            
             {NAV_LINKS.map((link) => (
               <Link 
                 key={link.name} 
                 href={link.href}
-                className="block text-lg font-semibold text-gray-700 py-3 border-b border-gray-100"
+                className="block text-2xl font-black text-slate-900 py-2 border-b border-gray-50 italic uppercase tracking-tighter"
                 onClick={(e) => handleScroll(e, link.href)}
               >
                 {link.name}
               </Link>
             ))}
 
-            <div className="flex flex-col gap-3 mt-4">
+            <div className="flex flex-col gap-4 mt-8">
               <NavButton 
                 href="https://melolink.portalinternet.com.br/radiusnet/cda/login.php" 
                 target="_blank" 
                 variant="outline"
+                className="py-5 text-base"
                 onClick={() => trackClick('login_area_assinante', 'Navbar Mobile')}
               >
-                <User size={18} /> Área do assinante
+                <User size={20} /> Área do assinante
               </NavButton>
 
               <NavButton 
                 href={WHATSAPP_PLANOS_URL} 
                 target="_blank"
+                className="py-5 text-base"
                 onClick={() => trackClick('contact_whatsapp', 'Botão Assinar Navbar Mobile')}
               >
                 Assinar Agora
@@ -163,7 +172,11 @@ export default function Navbar() {
         </div>
       </nav>
 
-      <div className={`fixed inset-0 bg-black/50 lg:hidden z-40 ${isOpen ? "visible" : "invisible"}`} onClick={closeMenu} />
+      {/* Overlay */}
+      <div 
+        className={`fixed inset-0 bg-black/60 backdrop-blur-sm lg:hidden z-40 transition-opacity duration-300 ${isOpen ? "opacity-100 visible" : "opacity-0 invisible"}`} 
+        onClick={closeMenu} 
+      />
     </>
   );
 }
