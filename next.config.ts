@@ -40,9 +40,9 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: '/elementor/:path*',
-        destination: '/404',
-        permanent: true,
+        source: '/elementor-818',
+        destination: '/#formulario',
+        permanent: true, 
       },
     ];
   },

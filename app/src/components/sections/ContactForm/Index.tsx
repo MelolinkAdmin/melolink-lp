@@ -78,7 +78,7 @@ export default function ContactForm() {
   }
 
   return (
-    <section className="py-16 bg-gray-50 px-4">
+    <section className="py-16 bg-gray-50 px-4" id='formulario'>
       <div className="w-full max-w-2xl mx-auto bg-white border border-gray-100 p-8 md:p-10 rounded-[32px] shadow-lg relative overflow-hidden">
         
         <div className="absolute top-0 right-0 w-24 h-24 bg-red-50 rounded-full -mr-12 -mt-12 blur-2xl opacity-40"></div>
