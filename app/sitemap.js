@@ -16,23 +16,23 @@ export default function sitemap() {
       priority: 0.9, // 2. Área do Assinante (Maior peso após a home)
     },
     {
-      url: `${baseUrl}/planos`,
+      url: `${baseUrl}/#planos`,
       lastModified,
       changeFrequency: 'monthly',
       priority: 0.8, // 3. Planos
     },
     {
-      url: `${baseUrl}/para-empresas`,
+      url: `${baseUrl}/#para-empresas`,
       priority: 0.75, // 4. Para Empresas (fica entre Planos e Sobre)
     },
     {
-      url: `${baseUrl}/sobre`,
+      url: `${baseUrl}/#sobre-nos`,
       lastModified,
       changeFrequency: 'monthly',
       priority: 0.7, // 4. Sobre
     },
     {
-      url: `${baseUrl}/contato`,
+      url: `${baseUrl}/#fale-conosco`,
       lastModified,
       changeFrequency: 'monthly',
       priority: 0.6, // 5. Contato

@@ -75,10 +75,10 @@ export default function RootLayout({
                   "@type": "SiteNavigationElement",
                   "hasPart": [
                     { "@type": "WebPage", "name": "Área do Assinante", "url": "https://www.melolink.com.br/assinante" },
-                    { "@type": "WebPage", "name": "Planos de Internet", "url": "https://www.melolink.com.br/planos" },
-                    { "@type": "WebPage", "name": "Para Empresas", "url": "https://www.melolink.com.br/para-empresas" },
-                    { "@type": "WebPage", "name": "Sobre Nós", "url": "https://www.melolink.com.br/sobre" },
-                    { "@type": "WebPage", "name": "Fale Conosco", "url": "https://www.melolink.com.br/contato" }
+                    { "@type": "WebPage", "name": "Planos de Internet", "url": "https://www.melolink.com.br/#planos" },
+                    { "@type": "WebPage", "name": "Para Empresas", "url": "https://www.melolink.com.br/#para-empresas" },
+                    { "@type": "WebPage", "name": "Sobre Nós", "url": "https://www.melolink.com.br/#sobre-nos" },
+                    { "@type": "WebPage", "name": "Fale Conosco", "url": "https://www.melolink.com.br/#fale-conosco" }
                   ]
                 }
               ]

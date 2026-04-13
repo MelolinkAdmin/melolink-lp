@@ -4,7 +4,7 @@ import contactsDataJson from "@/public/data/contatos.json";
 
 export const IconMap: Record<string, any> = {
   fatura: FileText,
-  contratar: ShoppingCart, // Alterado de 'teste' para 'contratar'
+  contratar: ShoppingCart, 
   suporte: Headset,
   redes: Share2,
   default: FileText

@@ -3,24 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
 
   async rewrites() {
-    return [
-      {
-        source: '/planos',
-        destination: '/',
-      },
-      {
-        source: '/contato',
-        destination: '/',
-      },
-      {
-        source: '/sobre',
-        destination: '/',
-      },
-      {
-        source: '/para-empresas',
-        destination: '/'
-      },
-    ];
+    return [];
   },
   async redirects() {
     return [
