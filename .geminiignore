@@ -16,4 +16,4 @@ dist/
 
 # Opcional: ignorar assets pesados que não importam para SEO/Sitelinks
 public/images/
-public/videos/
+public/videos/ 
