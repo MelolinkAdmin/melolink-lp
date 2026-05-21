@@ -21,7 +21,7 @@ export const BAIRROS_CUBATAO = [
     "PONTE NOVA",
     "RUBENS LARA",
     "SÍTIO NOVO",
-    "Vale Verde",
+    "VALE VERDE",
     "VILA COUTO",
     "VILA ESPERANÇA (ATÉ O PONTO FINAL)",
     "VILA NATAL",
