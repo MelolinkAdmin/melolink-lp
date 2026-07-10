@@ -22,7 +22,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Melolink – Dê um UP na sua conexão",
+  title: "Melolink – A internet que faltava em Cubatão",
   description: "Conecte-se com a ultravelocidade da Melolink em Cubatão. Internet fibra óptica estável e moderna para sua casa ou empresa. Conheça nossos planos!",
   metadataBase: new URL('https://www.melolink.com.br'),
   alternates: {
